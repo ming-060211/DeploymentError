@@ -4,16 +4,16 @@ steps:
       [
         'build',
         '-t',
-        'gcr.io/hive-347910/supaauth',
+        'gcr.io/$PROJECT_ID/supaauth',
         '--build-arg=SUPABASE_URL_PARAM=${_SUPABASE_URL_PARAM}',
         '--build-arg=SUPABASE_ANON_KEY_PARAM=${_SUPABASE_ANON_KEY_PARAM}',
         '.'
       ]
   # push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/hive-347910/supaauth']
+    args: ['push', 'gcr.io/$PROJECT_ID/supaauth']
 images:
-  - 'gcr.io/hive-347910/supaauth'
+  - 'gcr.io/$PROJECT_ID/supaauth'
 timeout: 1200s
 substitutions:
   _SUPABASE_URL_PARAM: missing
